@@ -40,10 +40,10 @@
 <!-- 왼쪽메뉴 -->
 <nav id="sub_menu">
 <ul>
-<li><a href="../center/notice.jsp">자유게시판</a></li>
-<li><a href="../center/gnotice.jsp">스샷</a></li>
-<li><a href="../center/fnotice.jsp">자료실</a></li>
-
+<li><a href="../center/notice.jsp">Notice</a></li>
+<li><a href="#">Public News</a></li>
+<li><a href="../center/fnotice.jsp">Driver Download</a></li>
+<li><a href="#">Service Policy</a></li>
 </ul>
 </nav>
 <!-- 왼쪽메뉴 -->
@@ -88,7 +88,7 @@ int num=count-(currentPage-1)*pageSize;
 %>
 <!-- 게시판 -->
 <article>
-<h1>자유게시판</h1>
+<h1>Notice [전체 글개수 : <%=count %> ]</h1>
 <table id="notice">
 <tr><th class="tno">No.</th>
     <th class="ttitle">Title</th>
@@ -96,7 +96,6 @@ int num=count-(currentPage-1)*pageSize;
     <th class="tdate">Date</th>
     <th class="tread">Read</th></tr>
     <%
-    if(count!=0){
     for(int i=0;i<boardList.size();i++){
     	//BoardBean bb=(BoardBean)boardList.get(i);
     	BoardBean bb=boardList.get(i);
@@ -108,7 +107,6 @@ int num=count-(currentPage-1)*pageSize;
     <td><%=sdf.format(bb.getDate()) %></td>
     <td><%=bb.getReadcount() %></td></tr>   	
     	<%
-    }
     }
     %>
 </table>

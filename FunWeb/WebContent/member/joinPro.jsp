@@ -16,7 +16,6 @@
 // request 한글처리
 request.setCharacterEncoding("utf-8");
 // 파라미터  id pass name email address  phone  mobile 변수에 저장
-
 String id=request.getParameter("id");
 String pass=request.getParameter("pass");
 String name=request.getParameter("name");

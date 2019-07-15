@@ -1,5 +1,5 @@
-<%@page import="board2.BoardBean"%>
-<%@page import="board2.BoardDAO"%>
+<%@page import="board.BoardBean"%>
+<%@page import="board.BoardDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -38,10 +38,10 @@
 <!-- 왼쪽메뉴 -->
 <nav id="sub_menu">
 <ul>
-<li><a href="../center/notice.jsp">자유게시판</a></li>
-<li><a href="../center/gnotice.jsp">스샷</a></li>
-<li><a href="../center/fnotice.jsp">자료실</a></li>
-
+<li><a href="../center/notice.jsp">Notice</a></li>
+<li><a href="#">Public News</a></li>
+<li><a href="../center/fnotice.jsp">Driver Download</a></li>
+<li><a href="#">Service Policy</a></li>
 </ul>
 </nav>
 <!-- 왼쪽메뉴 -->
@@ -71,13 +71,9 @@ if(content!=null){
 <tr><td class="twrite">작성자</td><td><%=bb.getName() %></td>
 <td class="twrite">작성일</td><td><%=bb.getDate() %></td></tr>
 <tr><td class="twrite">제목</td><td colspan="3"><%=bb.getSubject() %></td></tr>
-<% if(bb.getFile()!=null){
-	
-%>
 <tr><td class="twrite">파일</td>
-<td colspan="3">
+<td colspan="3"><a href="../upload/<%=bb.getFile()%>"><%=bb.getFile() %></a>
 <a href="file_down.jsp?file_name=<%=bb.getFile()%>"><%=bb.getFile() %></a></td></tr>
-<%} %>
 <tr><td class="twrite">내용</td><td colspan="3"><%=content %></td></tr>
 </table>
 <div id="table_search">
@@ -92,13 +88,13 @@ if(id!=null){
 <input type="button" value="글수정" class="btn" 
  onclick="location.href='fupdateForm.jsp?num=<%=num%>&pageNum=<%=pageNum%>'">
  <input type="button" value="글삭제" class="btn" 
- onclick="location.href='fdeleteForm.jsp?num=<%=num%>&pageNum=<%=pageNum%>'">		
+ onclick="location.href='deleteForm.jsp?num=<%=num%>&pageNum=<%=pageNum%>'">		
 		<%
 	}
 }
 %>
 <input type="button" value="글목록" class="btn" 
- onclick="location.href='fnotice.jsp?pageNum=<%=pageNum%>'">
+ onclick="location.href='notice.jsp?pageNum=<%=pageNum%>'">
 </div>
 <div class="clear"></div>
 <div id="page_control">

@@ -1,7 +1,7 @@
 <%@page import="com.oreilly.servlet.multipart.DefaultFileRenamePolicy"%>
 <%@page import="com.oreilly.servlet.MultipartRequest"%>
-<%@page import="board2.BoardDAO"%>
-<%@page import="board2.BoardBean"%>
+<%@page import="board.BoardDAO"%>
+<%@page import="board.BoardBean"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>

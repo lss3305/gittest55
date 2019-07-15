@@ -104,12 +104,14 @@ public class MemberDAO {
 		}
 		return check;
 	}
-	public int idCheck(String id) {
+	
+	//idcheck(id)
+	public int idcheck(String id) {
 		Connection con=null;
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
-		// 아이디비밀번호 일치 1,비밀번호틀림 0, 아이디없음 -1
-		int check=-1;
+		// 아이디 일치(아이디중복) 1 , 아이디없음 (아이디사용가능) 0
+		int check=0;
 		try {
 			//1단계 드라이버 로더			//2단계 디비연결
 			con=getConnection();
@@ -121,15 +123,12 @@ public class MemberDAO {
 			rs=pstmt.executeQuery();
 			// 5단계 : select 결과를 비교 해서 일치여부 확인
 			if(rs.next()){ //true이면 id.equals(rs.getString("id"))
-				//다음행 이동시 데이터가 있으면, id가 있으면
-				
-					// 아이디값 일치하면 "아이디 중복"
-					check=1;
-				}else{
-					// 일치하지 않으면 "아이디 사용가능" 
-					check=0;
-				}
-			
+				//다음행 이동시 데이터가 있으면, id가 있으면, id중복이면
+				check=1;
+			}else{
+				// "아이디없음, 아이디 사용가능"  
+				check=0;
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}finally {
@@ -161,10 +160,6 @@ public class MemberDAO {
 				mb.setId(rs.getString("id"));
 				mb.setPass(rs.getString("pass")); 
 				mb.setName(rs.getString("name")); 
-				mb.setEmail(rs.getString("email"));
-				mb.setAddress(rs.getString("address"));
-				mb.setPhone(rs.getString("phone"));
-				mb.setMobile(rs.getString("mobile"));
 				mb.setReg_date(rs.getTimestamp("reg_date")); 
 			}
 		} catch (Exception e) {
@@ -187,15 +182,10 @@ public class MemberDAO {
 			//1단계 드라이버 로더			//2단계 디비연결
 			con=getConnection();
 			//3단계 sql update
-			String sql="update member set name=?, email=?, address=?, phone=?, mobile=? where id=?";
+			String sql="update member set name=? where id=?";
 	 		pstmt=con.prepareStatement(sql);
 	 		pstmt.setString(1, mb.getName());
-	 		pstmt.setString(2, mb.getEmail());
-	 		pstmt.setString(3, mb.getAddress());
-	 		pstmt.setString(4, mb.getPhone());
-	 		pstmt.setString(5, mb.getMobile());
-	 		pstmt.setString(6, mb.getId());
-	 		
+	 		pstmt.setString(2, mb.getId());
 	 		//4단계 실행
 	 		pstmt.executeUpdate();
 		} catch (Exception e) {

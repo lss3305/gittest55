@@ -38,10 +38,10 @@
 <!-- 왼쪽메뉴 -->
 <nav id="sub_menu">
 <ul>
-<li><a href="../center/notice.jsp">자유게시판</a></li>
-<li><a href="../center/gnotice.jsp">스샷</a></li>
-<li><a href="../center/fnotice.jsp">자료실</a></li>
-
+<li><a href="../center/notice.jsp">Notice</a></li>
+<li><a href="#">Public News</a></li>
+<li><a href="../center/fnotice.jsp">Driver Download</a></li>
+<li><a href="#">Service Policy</a></li>
 </ul>
 </nav>
 <!-- 왼쪽메뉴 -->

@@ -73,9 +73,6 @@ public class BoardDAO {
 		}
 	}
 	
-	
-	
-	
 	//getBoardList()
 	public List<BoardBean> getBoardList(int startRow,int pageSize) {
 		Connection con=null;
@@ -119,7 +116,6 @@ public class BoardDAO {
 		return boardList;
 	}
 	
-		
 	//getBoardList()
 		public List<BoardBean> getBoardList(int startRow,int pageSize, String search) {
 			Connection con=null;
@@ -163,8 +159,7 @@ public class BoardDAO {
 			}
 			return boardList;
 		}
-		
-		
+	
 	//getBoard(num)
 	public BoardBean getBoard(int num) {
 		Connection con=null;
@@ -203,8 +198,6 @@ public class BoardDAO {
 		return bb;
 	}
 	
-	
-	
 	//updateReadcount(num)
 	public void updateReadcount(int num) {
 		Connection con=null;
@@ -228,8 +221,6 @@ public class BoardDAO {
 			if(con!=null) try{con.close();} catch(SQLException ex) {}
 		}
 	}
-	
-	
 	//numCheck(num,pass)
 	public int numCheck(int num,String pass) {
 		Connection con=null;
@@ -270,8 +261,6 @@ public class BoardDAO {
 		}
 		return check;
 	}
-	
-	
 	//updateBoard(bb)
 	public void updateBoard(BoardBean bb) {
 		Connection con=null;
@@ -299,9 +288,6 @@ public class BoardDAO {
 			if(con!=null) try{con.close();} catch(SQLException ex) {}
 		}
 	}
-	
-	
-	
 	//getBoardCount()
 	public int getBoardCount() {
 		Connection con=null;
@@ -329,8 +315,6 @@ public class BoardDAO {
 		}
 		return count;
 	}
-	
-	
 	
 	//getBoardCount()
 		public int getBoardCount(String search) {
@@ -361,33 +345,5 @@ public class BoardDAO {
 			}
 			return count;
 		}
-		
-		
-		
-		public void deleteBoard(BoardBean bb) {
-			Connection con=null;
-			PreparedStatement pstmt=null;
-			ResultSet rs=null;
-			try {
-				//1단계 드라이버 로더			//2단계 디비연결
-				con=getConnection();
-				//3단계 sql delete
-				String sql="delete from board where num=?";
-		 		pstmt=con.prepareStatement(sql);
-		 		pstmt.setInt(1, bb.getNum());
-		 		//4단계 실행
-		 		pstmt.executeUpdate();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}finally {
-				//마무리작업
-				if(rs!=null) try { rs.close();} catch(SQLException ex) {}
-				if(pstmt!=null) try{pstmt.close();} catch(SQLException ex) {}
-				if(con!=null) try{con.close();} catch(SQLException ex) {}
-			}
-		}
-		
-		
-		
-		
+	
 }//클래스

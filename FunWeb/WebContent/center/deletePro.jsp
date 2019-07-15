@@ -36,7 +36,7 @@ int check=bdao.numCheck(num, pass);
 //  리턴값이 0 이면 비밀번호틀림 뒤로이동
 //  리턴값이 -1 이면 아이디없음 뒤로이동
 if(check==1){
-	bdao.deleteBoard(bb);
+// 	bdao.deleteBoard(bb);
 	
 	response.sendRedirect("../main/main.jsp");
 }else if(check==0){

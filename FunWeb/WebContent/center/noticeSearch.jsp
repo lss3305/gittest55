@@ -105,7 +105,6 @@ int num=count-(currentPage-1)*pageSize;
     <th class="tdate">Date</th>
     <th class="tread">Read</th></tr>
     <%
-    if(count!=0){
     for(int i=0;i<boardList.size();i++){
     	//BoardBean bb=(BoardBean)boardList.get(i);
     	BoardBean bb=boardList.get(i);
@@ -116,7 +115,6 @@ int num=count-(currentPage-1)*pageSize;
     <td><%=sdf.format(bb.getDate()) %></td>
     <td><%=bb.getReadcount() %></td></tr>   	
     	<%
-    }
     }
     %>
 </table>
